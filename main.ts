@@ -1,8 +1,10 @@
 input.onButtonPressed(Button.A, function () {
     Pin += 1
+    allPinsNull()
 })
 input.onButtonPressed(Button.B, function () {
     Pin += -1
+    allPinsNull()
 })
 function allPinsNull () {
     pins.digitalWritePin(DigitalPin.P0, 0)
@@ -15,6 +17,7 @@ function allPinsNull () {
 allPinsNull()
 let Pin = 0
 basic.forever(function () {
+    basic.showNumber(Pin)
     if (Pin == 1) {
         pins.digitalWritePin(DigitalPin.P0, 1)
     } else if (Pin == 2) {
