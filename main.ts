@@ -15,15 +15,15 @@ function allPinsNull () {
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
 allPinsNull()
+let Lichtsensor = 0
 let Pin = 0
 basic.forever(function () {
-    basic.showNumber(Pin)
     if (Pin == 1) {
-        pins.digitalWritePin(DigitalPin.P0, 1)
-    } else if (Pin == 2) {
         pins.digitalWritePin(DigitalPin.P1, 1)
-    } else if (Pin == 3) {
+    } else if (Pin == 2) {
         pins.digitalWritePin(DigitalPin.P2, 1)
+    } else if (Pin == 3) {
+        pins.digitalWritePin(DigitalPin.P3, 1)
     } else if (Pin == 4) {
         pins.digitalWritePin(DigitalPin.P8, 1)
     } else if (Pin == 5) {
@@ -31,4 +31,7 @@ basic.forever(function () {
     } else {
         allPinsNull()
     }
+    basic.pause(100)
+    Lichtsensor = pins.analogReadPin(AnalogPin.P0)
+    basic.showNumber(Lichtsensor)
 })
